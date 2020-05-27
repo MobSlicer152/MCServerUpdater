@@ -1,0 +1,2 @@
+libcurl - https://curl.haxx.se
+json-c - https://json-c.github.io
