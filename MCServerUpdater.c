@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 	struct cJSON *tmp;
 	struct cJSON *current_id;
 
-	printf("Initializing libcurl...\n\n");
+	printf("Initializing libcurl...\n");
 	result = curl_global_init(CURL_GLOBAL_ALL);
 
 	if (result != 0) {
@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 		exit(-1);
 	}
 
-	printf("Fetching new version manifest...\n\n");
+	printf("Fetching new version manifest...\n");
 
 	dl_file("launchermeta.mojang.com/mc/game/version_manifest.json",
 		"version_manifest.json");
@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
 	}
 	versions = cJSON_GetObjectItem(manifest, "versions");
 
-	printf("Looking for version %s...\n\n", version);
+	printf("Looking for version %s...\n", version);
 
 	printf("Finding URL of %s version JSON...", version);
 
@@ -72,7 +72,7 @@ int main(int argc, char *argv[])
 			"Error: unable to find the URL of the version JSON\n");
 		exit(-1);
 	} else {
-		printf("%s\n\n", cJSON_GetStringValue(url_version));
+		printf("%s\n", cJSON_GetStringValue(url_version));
 	}
 
 	char version_json_fname[15] = { 0 };
@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
 	printf("Downloading %s...", version_json_fname);
 
 	dl_file(cJSON_GetStringValue(url_version), version_json_fname);
-	printf("done\n\n");
+	printf("done\n");
 
 	printf("Looking for %s server download URL in %s...", version, version_json_fname);
 
@@ -96,7 +96,7 @@ int main(int argc, char *argv[])
 			"Error: unable to locate the server download URL\n");
 		exit(-1);
 	} else
-		printf("%s\n\n", cJSON_GetStringValue(url_server));
+		printf("%s\n", cJSON_GetStringValue(url_server));
 
 	char server_jar_fname[15];
 	snprintf(server_jar_fname, 15, "%s.jar", version);
@@ -104,9 +104,9 @@ int main(int argc, char *argv[])
 	printf("Downloading %s...", server_jar_fname);
 
 	dl_file(cJSON_GetStringValue(url_server), server_jar_fname);
-	printf("done\n\n");
+	printf("done\n");
 
-	printf("Cleaning up temporary files...\n\n");
+	printf("Cleaning up temporary files...\n");
 	remove(version_json_fname);
 	remove("version_manifest.json");
 
