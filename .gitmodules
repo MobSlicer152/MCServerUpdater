@@ -1,0 +1,9 @@
+[submodule "deps/curl"]
+	path = deps/curl
+	url = https://github.com/curl/curl
+[submodule "deps/cjson"]
+	path = deps/cjson
+	url = https://github.com/DaveGamble/cJSON
+[submodule "deps/mbedtls"]
+	path = deps/mbedtls
+	url = https://github.com/Mbed-TLS/mbedtls
