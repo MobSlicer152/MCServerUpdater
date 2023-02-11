@@ -45,9 +45,9 @@ int main(int argc, char *argv[])
 	json_buf = read_file("version_manifest.json");
 	manifest = cJSON_Parse(json_buf);
 
-	if (argc < 2 || strcmp(argv[1], "snapshot") == 0) {
+	if (argc < 2 || strcmp(argv[1], "snapshot") == 0 || strcmp(argv[1], "release") == 0) {
 		latest = cJSON_GetObjectItem(manifest, "latest");
-		version = cJSON_GetStringValue(cJSON_GetObjectItem(latest, "snapshot"));
+		version = cJSON_GetStringValue(cJSON_GetObjectItem(latest, argc > 1 ? argv[1] : "snapshot"));
 	} else {
 		version = argv[1];
 	}
