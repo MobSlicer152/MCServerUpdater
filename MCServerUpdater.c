@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -163,7 +164,7 @@ void dl_file(const char *url, const char *fname)
 		fp = fopen(fname, "wb");
 
 		curl_easy_setopt(curl, CURLOPT_URL, url);
-		curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+		curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, false);
 		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, curl_write_data);
 		curl_easy_setopt(curl, CURLOPT_WRITEDATA, fp);
 
